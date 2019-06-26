@@ -3,16 +3,6 @@ import { CREATE_USER, AUTH_USER, AUTH_ERR, ACCN_VERIFY_ERR, ACCN_VERIFY } from '
 
 const ROOT_URL = 'http://tripaider.in/api/users';
 
-// export function createUser(values, callback) {
-//     const request = axios.post(`${ROOT_URL}/signup`, values)
-//     .then(() => callback());
-
-//     return {
-//         type: CREATE_USER,
-//         payload: request
-//     };
-// }
-
 export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post(`${ROOT_URL}/signup`,
@@ -31,7 +21,7 @@ export const signup = (formProps, callback) => async dispatch => {
 export const signin = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post(
-      "http://tripaider.in/api/users/login",
+      `${ROOT_URL}/login`,
       formProps
     );
     
@@ -64,7 +54,7 @@ export const logout = () => {
 export const accountVerification = (email, callback) => async dispatch => {
   try {
     const response = await axios.get(
-      `http://tripaider.in/users/verify/${email}`
+      `${ROOT_URL}/verify/${email}`
     );
 
  console.log("response ", response);

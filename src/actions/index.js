@@ -4,7 +4,6 @@ import { AUTH_USER, AUTH_ERR, ACCN_VERIFY_ERR, ACCN_VERIFY } from '../constants'
 const ROOT_URL = 'http://tripaider.in/api/users';
 
 export const signup = (formProps, callback) => async dispatch => {
-  console.log("formProps ", formProps);
   try {
     const response = await axios.post(`${ROOT_URL}/signup`,
       formProps

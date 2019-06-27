@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import * as actions from "../actions";
@@ -14,7 +13,7 @@ class Verification extends Component {
     }
 
     render() {
-        const {errorMessage} = this.props;
+        const { errorMessage } = this.props;
 
         return ( 
             <div className="container py-5">
@@ -24,7 +23,7 @@ class Verification extends Component {
                 </Helmet>
                 <h2 className="text-center mb-5">Account activation</h2>
                 {errorMessage && <div className="text-danger">{errorMessage}</div>}
-                {!errorMessage && <p>Your account is successfully activated. Please <Link to="login">login</Link>.</p>}
+                {!errorMessage && <p>Wait while we validate your account...</p>}
             </div>
          );
     }

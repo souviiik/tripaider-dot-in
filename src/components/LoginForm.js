@@ -39,7 +39,7 @@ let LoginForm = props => {
     <form onSubmit={handleSubmit}>
       <small className="text-info">All fields are mandatory</small>
       <Field
-        type="text"
+        type="email"
         component={renderField}
         name="username"
         label="Email address"

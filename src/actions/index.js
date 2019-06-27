@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { CREATE_USER, AUTH_USER, AUTH_ERR, ACCN_VERIFY_ERR, ACCN_VERIFY } from '../constants';
+import { AUTH_USER, AUTH_ERR, ACCN_VERIFY_ERR, ACCN_VERIFY } from '../constants';
 
 const ROOT_URL = 'http://tripaider.in/api/users';
 
 export const signup = (formProps, callback) => async dispatch => {
+  console.log("formProps ", formProps);
   try {
     const response = await axios.post(`${ROOT_URL}/signup`,
       formProps
@@ -49,15 +50,11 @@ export const logout = () => {
   };
 };
 
-
-
 export const accountVerification = (email, callback) => async dispatch => {
   try {
     const response = await axios.get(
       `${ROOT_URL}/verify/${email}`
     );
-
- console.log("response ", response);
     
     dispatch({
       type: ACCN_VERIFY,

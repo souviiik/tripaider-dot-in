@@ -52,7 +52,7 @@ class Header extends Component {
               >
                 <span className="glyphicon glyphicon-user" /> Profile
               </NavLink>
-              <NavLink className="dropdown-item" to="/change-password">Change password</NavLink>
+              <NavLink className="dropdown-item" onClick={this.toggleSubMenuVisibility} to="/change-password">Change password</NavLink>
               <div className="dropdown-divider"></div>
               <NavLink
                 className="dropdown-item"

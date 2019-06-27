@@ -1,37 +1,20 @@
 import React, { Fragment } from "react";
 import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
 import { MdError, MdInfo } from "react-icons/md";
 import ReactTooltip from 'react-tooltip'
 
 const validate = values => {
   const errors = {}
   
-  if(!values.firstname) {
-    errors.firstname = 'Please enter your first name'
-  } else if (values.firstname.length < 2) {
-    errors.firstname = 'Your first name must be 2 characters or more'
-  }
-  
-  if(!values.lastname) {
-    errors.lastname = 'Please enter your last name'
-  } else if (values.lastname.length < 2) {
-    errors.lastname = 'Your last name must be 2 characters or more'
-  }
-  
   if (!values.username) {
-    errors.username = 'Please enter your personal email address'
+    errors.username = 'Please enter your registered email address'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)) {
     errors.username = 'Please enter a valid email address'
   }
 
   if (!values.password) {
-    errors.password = 'Please enter a password'
-  } else if (!/^(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{7,30}$/i.test(values.password)) {
-    errors.password = 'Your password does not meet password requirement.'
-  }
-
-  if (values.password !== values.retypepass) {
-    errors.retypepass = 'Passwords does not match!'
+    errors.password = 'Please enter your password'
   }
   
   return errors
@@ -56,62 +39,43 @@ const renderField = ({
   </div>
 )
 
-let SignupForm = props => {
+let ChangeCurrentPasswordForm = props => {
   const { handleSubmit, submitting, invalid, errorMessage } = props;
 
   return (
     <form onSubmit={handleSubmit}>
       <small className="text-info">All fields are mandatory</small>
-      <div className="row">
-        <div className="col-md-6">
-            <Field
-              type="text"
-              component={renderField}
-              name="firstname"
-              label="First name"
-            />
-        </div>
-        <div className="col-md-6">
-        <Field
-              type="text"
-              component={renderField}
-              name="lastname"
-              label="Last name"
-            />
-        </div>
-      </div>
-
       <Field
-        type="email"
+        type="password"
         component={renderField}
-        name="username"
-        label="Email address"
+        name="oldpass"
+        label="Current password"
       />
       <Field
         type="password"
         component={renderField}
-        name="password"
-        label="Password"
+        name="newpass"
+        label="New password"
         tooltip={true}
       />
       <Field
         type="password"
         component={renderField}
-        name="retypepass"
-        label="Retype password"
+        name="retypenewpass"
+        label="Retype new password"
       />
       {errorMessage && <div className="text-danger">{errorMessage}</div>}
-      <button type="submit" className="btn btn-primary my-3" disabled={submitting || invalid}>
-        Join tripaider
+      <button type="submit" className="btn btn-primary mb-3" disabled={submitting || invalid}>
+        Login
       </button>
     </form>
   );
 };
 
-SignupForm = reduxForm({
+ChangeCurrentPasswordForm = reduxForm({
   // a unique name for the form
-  form: "signup",
+  form: "changepassword",
   validate
-})(SignupForm);
+})(ChangeCurrentPasswordForm);
 
-export default SignupForm;
+export default ChangeCurrentPasswordForm;

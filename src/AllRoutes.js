@@ -16,6 +16,7 @@ import Profile from "./components/PrivatePages/Profile";
 import PageNotFound from "./components/PageNotFound";
 import PostProject from "./components/PostProject";
 import Verification from "./components/Verification";
+import ChangeCurrentPassword from "./components/PrivatePages/ChangeCurrentPassword";
 
 const AllRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const AllRoutes = () => {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/logout" component={Logout} />
         <Route path="/verification/:email" component={Verification} />
+        <Route path="/change-password" component={ChangeCurrentPassword} />
         <Route component={PageNotFound} />
       </Switch>
       <Footer />

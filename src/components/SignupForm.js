@@ -100,7 +100,7 @@ let SignupForm = props => {
         name="retypepass"
         label="Retype password"
       />
-      {errorMessage && <div className="text-danger">{errorMessage}</div>}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <button type="submit" className="btn btn-primary my-3" disabled={submitting || invalid}>
         Join tripaider
       </button>

@@ -54,7 +54,7 @@ let LoginForm = props => {
       <p>
         <Link to="forgot-password">Forgot password?</Link>
       </p>
-      {errorMessage && <div className="text-danger">{errorMessage}</div>}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <button type="submit" className="btn btn-primary mb-3" disabled={submitting || invalid}>
         Login
       </button>

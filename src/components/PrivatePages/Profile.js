@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import requireAuth from "../requireAuth";
 
 class Profile extends Component {
   render() {
+    const { firstname, lastname } = this.props.user;
     return (
       <div className="container py-5">
         <Helmet>
@@ -21,7 +23,7 @@ class Profile extends Component {
                   className="img-fluid img-thumbnail"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5MlDZeVgUPv4QvLatoQCoUFgqt1HUmSpMY0hHeJN2Y3J6hP2eNw"
                 />
-                <h5 className="mt-4">Souvik Banerjee</h5>
+                <h5 className="mt-4">{firstname} {lastname}</h5>
                 <p>India / 7:30 pm</p>
                 <p>Member since August 29, 2016</p>
                 <p>0 Recomendations</p>
@@ -85,4 +87,10 @@ class Profile extends Component {
   }
 }
 
-export default requireAuth(Profile);
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user
+  };
+}
+
+export default connect(mapStateToProps)(requireAuth(Profile));

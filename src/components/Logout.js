@@ -14,11 +14,11 @@ class Logout extends Component {
       <div className="container py-5">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Logout | tripaider.in</title>
+          <title>Good bye | tripaider.in</title>
         </Helmet>
 
         <h2>Sorry to see you go...</h2>
-        <p>Welcome</p>
+        <p>good bye</p>
       </div>
     );
   }

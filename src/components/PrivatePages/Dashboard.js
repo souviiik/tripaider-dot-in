@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import requireAuth from "../requireAuth";
 
 class Dashboard extends Component {
   render() {
+    const { firstname, lastname } = this.props.user;
+    console.log("this.props ", this.props);
     return (
       <div className="container py-5">
         <Helmet>
@@ -40,7 +43,7 @@ class Dashboard extends Component {
           <div className="col-md-4">
             <div className="border border-dark p-3 mb-3">
               welcome back,
-              <h4>Souvik Banerjee</h4>
+              <h4>{firstname} {lastname}</h4>
               <hr />
               <Link to="/">Complete your account ></Link>
             </div>
@@ -51,4 +54,10 @@ class Dashboard extends Component {
   }
 }
 
-export default requireAuth(Dashboard);
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user
+  };
+}
+
+export default connect(mapStateToProps)(requireAuth(Dashboard));

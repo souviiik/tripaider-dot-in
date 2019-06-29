@@ -35,7 +35,7 @@ class Header extends Component {
           </li>
           <li className={this.state.isSubMenuHidden ? "nav-item dropdown" : "nav-item dropdown show"}>
             <a onClick={this.toggleSubMenuVisibility} className="nav-link dropdown-toggle ml-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded={!this.state.isSubMenuHidden}>
-              Welcome Souvik Banerjee!
+              Welcome {this.props.user.firstname} {this.props.user.lastname}!
             </a>
             <div className={this.state.isSubMenuHidden ? "dropdown-menu" : "dropdown-menu show"} aria-labelledby="navbarDropdown">
               <NavLink
@@ -57,7 +57,7 @@ class Header extends Component {
               <NavLink
                 className="dropdown-item"
                 to="/logout"
-                onClick={this.toggleSubMenuVisibility}
+                onClick={this.toggleMenuVisibility}
               >
                 <span className="glyphicon glyphicon-log-in" /> Logout
               </NavLink>
@@ -156,7 +156,10 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated };
+  return { 
+    authenticated: state.auth.authenticated,
+    user: state.auth.user
+  };
 }
 
 export default connect(mapStateToProps)(Header);

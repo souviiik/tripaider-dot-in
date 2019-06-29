@@ -2,8 +2,7 @@ import { AUTH_USER, AUTH_ERR, ACCN_VERIFY, ACCN_VERIFY_ERR } from '../constants'
 
 const INITIAL_STATE = {
   authenticated: "",
-  errorMessage: "",
-  userDetails: {}
+  errorMessage: ""
 };
 
 export default function(state = INITIAL_STATE, action) {

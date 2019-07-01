@@ -8,7 +8,7 @@ class Verification extends Component {
     componentDidMount() {
         const email = this.props.match.params.email;
         this.props.accountVerification(email, () => {
-            this.props.history.push("/dashboard");
+            this.props.history.push("/login");
         });
     }
 

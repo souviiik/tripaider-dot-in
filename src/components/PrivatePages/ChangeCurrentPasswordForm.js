@@ -30,9 +30,9 @@ const renderField = ({
   <div className="form-group">
     <label>{label}:</label> {tooltip && <Fragment><a data-tip="React-tooltip"><MdInfo /></a>
     <ReactTooltip place="top" type="dark" effect="float">
-    <p>The basic password requires at least 
+    <div>A basic password requires at least 
       <ul className="mt-2">
-        <li>1 lower case,</li><li>1 upper case,</li><li>1 numeric,</li><li>1 non-word and</li><li>no whitespace</li></ul></p>
+        <li>1 lower case,</li><li>1 upper case,</li><li>1 numeric,</li><li>1 non-word and</li><li>no whitespace</li></ul></div>
     </ReactTooltip></Fragment>}
     {touched && (error && <small className="text-danger ml-2"><MdError /> {error}</small>)}
     <input {...input} placeholder={label} type={type} className="form-control" />
@@ -48,13 +48,13 @@ let ChangeCurrentPasswordForm = props => {
       <Field
         type="password"
         component={renderField}
-        name="oldpass"
+        name="old_password"
         label="Current password"
       />
       <Field
         type="password"
         component={renderField}
-        name="newpass"
+        name="new_password"
         label="New password"
         tooltip={true}
       />
@@ -66,7 +66,7 @@ let ChangeCurrentPasswordForm = props => {
       />
       {errorMessage && <div className="text-danger">{errorMessage}</div>}
       <button type="submit" className="btn btn-primary mb-3" disabled={submitting || invalid}>
-        Login
+        Save password
       </button>
     </form>
   );

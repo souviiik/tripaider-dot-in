@@ -3,3 +3,7 @@ export const AUTH_USER = 'auth_user';
 export const AUTH_ERR = 'auth_err';
 export const ACCN_VERIFY = 'account_verification';
 export const ACCN_VERIFY_ERR = 'account_verification_error';
+export const FORGOT_PASSWORD = 'forgot_password';
+export const FORGOT_PASSWORD_FAILED = 'forgot_password_failed';
+export const UPDATE_PASSWORD = 'update_password';
+export const UPDATE_PASSWORD_FAILED = 'update_password_failed';

@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 import ChangeCurrentPasswordForm from './ChangeCurrentPasswordForm';
 import requireAuth from "../requireAuth";
 
 class ChangeCurrentPassword extends Component {
+    submit = formProps => {
+      this.props.updatePassword(formProps, () => {
+        this.props.logout();  
+        this.props.history.push("/login");
+      });
+    };
+
     render() {
         return (
             <div className="container py-5">
@@ -19,4 +28,13 @@ class ChangeCurrentPassword extends Component {
     }
 }
 
-export default requireAuth(ChangeCurrentPassword);
+
+
+function mapStateToProps(state) {
+    return { errorMessage: state.auth.errorMessage };
+}
+
+export default connect(
+    mapStateToProps,
+    actions
+)(requireAuth(ChangeCurrentPassword));

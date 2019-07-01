@@ -8,7 +8,7 @@ import requireAuth from "../requireAuth";
 class Dashboard extends Component {
   render() {
     const { firstname, lastname } = this.props.user;
-    console.log("this.props ", this.props);
+    
     return (
       <div className="container py-5">
         <Helmet>

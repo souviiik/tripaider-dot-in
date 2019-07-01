@@ -2,12 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
-export default class ForgotPassword extends React.Component {
-  submit = values => {
-    // print the form values to the console
-    console.log("values:", values);
+class ForgotPassword extends React.Component {
+  submit = formProps => {
+    this.props.forgotPassword(formProps, () => {
+      this.props.history.push("/login");
+    });
   };
+
   render() {
     return (
       <div className="container py-5">
@@ -25,3 +29,12 @@ export default class ForgotPassword extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.errorMessage };
+}
+
+export default connect(
+  mapStateToProps,
+  actions
+)(ForgotPassword);

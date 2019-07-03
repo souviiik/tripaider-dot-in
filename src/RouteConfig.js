@@ -17,8 +17,9 @@ import PageNotFound from "./components/PageNotFound";
 import PostProject from "./components/PostProject";
 import Verification from "./components/Verification";
 import ChangeCurrentPassword from "./components/PrivatePages/ChangeCurrentPassword";
+import ResetPassword from "./components/ResetPassword";
 
-const AllRoutes = () => {
+const RouteConfig = () => {
   return (
     <BrowserRouter>
       <Header />
@@ -36,6 +37,7 @@ const AllRoutes = () => {
         <Route path="/logout" component={Logout} />
         <Route path="/verification/:email" component={Verification} />
         <Route path="/change-password" component={ChangeCurrentPassword} />
+        <Route path="/reset-password/:hash" component={ResetPassword} />
         <Route component={PageNotFound} />
       </Switch>
       <Footer />
@@ -43,4 +45,4 @@ const AllRoutes = () => {
   );
 };
 
-export default AllRoutes;
+export default RouteConfig;

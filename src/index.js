@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import AllRoutes from "./AllRoutes";
+import RouteConfig from "./RouteConfig";
 import store from "./store";
 
 import "./styles.css";
@@ -11,7 +11,7 @@ import "./styles.css";
 function App() {
   return (
     <Provider store={store}>
-      <AllRoutes />
+      <RouteConfig />
     </Provider>
   );
 }

@@ -4,16 +4,16 @@ import { MdError, MdInfo } from "react-icons/md";
 import ReactTooltip from 'react-tooltip'
 
 const validate = values => {
-  const errors = {}
-  
-  if (!values.username) {
-    errors.username = 'Please enter your registered email address'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)) {
-    errors.username = 'Please enter a valid email address'
+  const errors = {}  
+
+  if (!values.newpass) {
+    errors.newpass = 'Please enter a password'
+  } else if (!/^(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{7,30}$/i.test(values.newpass)) {
+    errors.newpass = 'Your password does not meet password requirement.'
   }
 
-  if (!values.password) {
-    errors.password = 'Please enter your password'
+  if (values.retypenewpass !== values.newpass) {
+    errors.retypenewpass = 'Passwords does not match!'
   }
   
   return errors
@@ -38,7 +38,7 @@ const renderField = ({
   </div>
 )
 
-let ChangeCurrentPasswordForm = props => {
+let ResetPasswordForm = props => {
   const { handleSubmit, submitting, invalid, errorMessage } = props;
 
   return (
@@ -47,13 +47,7 @@ let ChangeCurrentPasswordForm = props => {
       <Field
         type="password"
         component={renderField}
-        name="old_password"
-        label="Current password"
-      />
-      <Field
-        type="password"
-        component={renderField}
-        name="new_password"
+        name="newpass"
         label="New password"
         tooltip={true}
       />
@@ -65,16 +59,16 @@ let ChangeCurrentPasswordForm = props => {
       />
       {errorMessage && <div className="text-danger">{errorMessage}</div>}
       <button type="submit" className="btn btn-primary mb-3" disabled={submitting || invalid}>
-        Save password
+        Reset password
       </button>
     </form>
   );
 };
 
-ChangeCurrentPasswordForm = reduxForm({
+ResetPasswordForm = reduxForm({
   // a unique name for the form
-  form: "changepassword",
+  form: "resetpassword",
   validate
-})(ChangeCurrentPasswordForm);
+})(ResetPasswordForm);
 
-export default ChangeCurrentPasswordForm;
+export default ResetPasswordForm;
